@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro"
+       name="ur5" >
+
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
+
+  <!-- ur5 -->
+  <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
+
+  <!-- arm -->
+  <xacro:ur5_robot prefix="" joint_limited="true"
+    shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
+    shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
+    elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
+    wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
+    wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
+    wrist_3_lower_limit="${-pi}" wrist_3_upper_limit="${pi}"
+    transmission_hw_interface="$(arg transmission_hw_interface)"
+  />
+
+  <link name="world" />
+  <link name="base_support_cylinder_link" >
+      <visual>
+        <geometry>
+         <cylinder length="1.2" radius="0.085" />
+        </geometry>
+        <material name="LightGrey">
+          <color rgba="0 0.7 0.7 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder length="1.2" radius="0.05" />
+        </geometry>
+      </collision>
+    </link>
+  <link name="base_support_cylinder_link_2" >
+      <visual>
+        <geometry>
+         <cylinder length="0.4" radius="0.05" />
+        </geometry>
+        <material name="LightGrey">
+          <color rgba="0 0.7 0.7 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder length="0.4" radius="0.05" />
+        </geometry>
+      </collision>
+    </link>
+
+  <link name="base_support_box_link" >
+      <visual>
+        <geometry>
+         <box size="0.1 0.45 0.1" />
+        </geometry>
+        <material name="LightGrey">
+          <color rgba="0 0.7 0.7 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <box size="0.1 0.40 0.1" />
+        </geometry>
+      </collision>
+    </link>
+
+  <link name="world_link" >
+
+  </link>
+
+
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link ="base_support_cylinder_link" />
+    <origin xyz="0.0 0.0 0.6" rpy="0.0 0.0 1.5708" />
+  </joint>
+
+  <joint name="cylinde_cylinder_link" type="fixed">
+    <parent link="base_support_cylinder_link" />
+    <child link ="base_support_cylinder_link_2" />
+    <origin xyz="0.0 0.0 0.8" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <joint name="box_cylinder_link" type="fixed">
+    <parent link="base_support_cylinder_link_2" />
+    <child link ="base_support_box_link" />
+    <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <joint name="base_world_joint" type="fixed">
+      <parent link="base_support_box_link" />
+      <child link = "world_link" />
+      <origin xyz="0.0 0.25 0.0" rpy="0.0 0.0 -1.5708" />
+  </joint>
+
+
+  <joint name="base_support_joint_L" type="fixed">
+      <parent link="world_link" />
+      <child link = "base_link" />
+      <origin xyz="0.0 0.0 0.0" rpy="-0.61548 -2.61799 0.955316" />
+  </joint>
+
+</robot>
