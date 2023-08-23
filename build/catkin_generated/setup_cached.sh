@@ -7,10 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/shenzhifei/my/code/urdf_ws/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/shenzhifei/my/code/urdf_ws/devel/lib:/opt/ros/noetic/lib:/opt/ros/noetic/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
-export PATH='/opt/ros/noetic/bin:/home/shenzhifei/.mujoco/mujoco200/bin:/usr/lib/nvidia:/home/shenzhifei/anaconda3/condabin:/home/shenzhifei/anaconda3/bin:/usr/local/cuda-11.0/bin:/home/shenzhifei/.local/bin:/home/shenzhifei/anaconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
-export PKG_CONFIG_PATH="/home/shenzhifei/my/code/urdf_ws/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/shenzhifei/my/code/urdf_ws/build'
-export ROSLISP_PACKAGE_DIRECTORIES='/home/shenzhifei/my/code/urdf_ws/devel/share/common-lisp'
-export ROS_PACKAGE_PATH="/home/shenzhifei/my/code/urdf_ws/src:$ROS_PACKAGE_PATH"

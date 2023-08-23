@@ -1,2 +1,2 @@
-ur_description
+robotiq_description:ur_description
 -DCATKIN_DEVEL_PREFIX=/home/shenzhifei/my/code/urdf_ws/devel -DCMAKE_INSTALL_PREFIX=/home/shenzhifei/my/code/urdf_ws/install -G Unix Makefiles
